@@ -4,7 +4,7 @@
 # Base cases are conditionals with return statements that are evaluated for every separate recursion of the function.
 # Eventually, the base case will break (return) the recursion. Therefore, it must eventually evaluate to true.
 
-# The call stack (stack as in LIFO) keeps track of the function's calling and their respective namespaces.
+# The call stack (as in LIFO) keeps track of the functions' calling and their respective namespaces.
 # Whenever a function is called, that function calling is added to the top of the stack.
 # With recursion, if there are no base cases, the stack overflows with function callings, crashing the program.
 

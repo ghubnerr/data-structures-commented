@@ -188,3 +188,121 @@ class BinarySearchTree:
         """Removes pointers pointing to the Node containing target value. Rearranges tree accordingly"""
 
         self.__delete_node(self.root, value)
+
+# ---------------------------------------------------------------------------- #
+    
+    # Tree traversal
+
+    # Breadth-First Search
+    # BFS is a graph traversal algorithm that explores a graph or a tree structure level by level. 
+    # It starts at a specified node (often the root node) and systematically explores all the neighboring nodes at the current level before moving on to the next level.
+    # BFS ensures that all nodes at a particular depth or level are visited before moving on to nodes at the next depth.
+    # BFS explores the tree level by level, visiting the nodes from left to right within each level.
+
+    # Sample Tree Structure:
+    #       1
+    #     /   \
+    #    2     3
+    #   / \   / \
+    #  4   5 6   7
+
+    # bfs() return: [1, 2, 3, 4, 5, 6, 7]
+
+
+    def bfs(self) -> list:
+        """Breadth-First Search Traversal. Returns Hierarchical Order (Levels)"""
+
+        current_node = self.root  # Start at the root node
+        queue = []  # Initialize an empty queue (also called frontier)
+        results = []  # Initialize an empty list to store the results
+        queue.append(current_node)  # Add the current node to the queue
+
+        while len(queue) > 0:  # Continue until the queue is empty
+            current_node = queue.pop(0)  # Remove and retrieve the first node from the queue
+            results.append(current_node.value)  # Add the value of the current node to the results
+
+            if current_node.left is not None:  # If the current node has a left child
+                queue.append(current_node.left)  # Add the left child to the queue
+
+            if current_node.right is not None:  # If the current node has a right child
+                queue.append(current_node.right)  # Add the right child to the queue
+
+        return results 
+
+    # Depth-First Search
+    # DFS is a graph traversal algorithm that explores a graph or a tree structure in a depth-first manner.
+    # DFS explores the tree by going as deep as possible before exploring sibling nodes, and it can do so in three different manners.
+
+    # Sample Tree Structure:
+    #       1
+    #     /   \
+    #    2     3
+    #   / \   / \
+    #  4   5 6   7
+
+    # dfs_pre_order() return: [1, 2, 4, 5, 3, 6, 7]
+    # dfs_in_order() return: [4, 2, 5, 1, 6, 3, 7]
+    # dfs_post_order() return: [4, 5, 2, 6, 7, 3, 1]
+    
+
+def dfs_pre_order(self) -> list:
+    """Depth-First Search PreOrder Traversal"""
+
+    results = []
+    
+    def traverse(current_node):
+        """Recursive function that performs pre-order traversal"""
+
+        results.append(current_node.value)  # Append current node value to results BEFORE traversing children
+        
+        if current_node.left is not None:  # Traverse left child first, if it's not empty
+            traverse(current_node.left)
+        
+        if current_node.right is not None:  # Traverse right child next, if it's not empty
+            traverse(current_node.right)
+    
+    traverse(self.root)  # Start traversal from the root
+
+    return results
+
+
+def dfs_in_order(self) -> list:
+    """Depth-First Search InOrder Traversal"""
+
+    results = []
+    
+    def traverse(current_node):
+        """Recursive function that performs in-order traversal"""
+
+        if current_node.left is not None:  # Traverse left child first, if it's not empty
+            traverse(current_node.left)
+        
+        results.append(current_node.value)  # Append current value to results IN-BETWEEN traversing children
+        
+        if current_node.right is not None:  # Traverse right child next, if it's not empty
+            traverse(current_node.right)
+    
+    traverse(self.root)  # Start traversal from the root
+
+    return results
+
+
+def dfs_post_order(self) -> list:
+    """Depth-First Search PostOrder Traversal"""
+
+    results = []
+    
+    def traverse(current_node):
+        """Recursive function that performs post-order traversal"""
+
+        if current_node.left is not None:  # Traverse left child first, if it's not empty
+            traverse(current_node.left)
+        
+        if current_node.right is not None:  # Traverse right child next, if it's not empty
+            traverse(current_node.right)
+        
+        results.append(current_node.value)  # Append current value to results AFTER traversing children
+    
+    traverse(self.root)  # Start traversal from the root
+
+    return results
