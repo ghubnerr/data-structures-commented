@@ -1,5 +1,7 @@
 from node import Node
 
+# TODO: Comment SLL Class
+
 class LinkedList():
     def __init__(self, value):
         self.head = Node(value)
@@ -89,7 +91,7 @@ class LinkedList():
             return None
         if index == 0:
             self.pop_first()
-        if index == self.length - 1:
+        if index == self.length:
             self.pop()
         prev = self.get(index-1)
         temp = prev.next

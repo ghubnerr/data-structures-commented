@@ -189,6 +189,26 @@ class BinarySearchTree:
 
         self.__delete_node(self.root, value)
 
+    def invert(self) -> None:
+        """Calls on helper recursive function"""
+
+        self.__invert(self.root)
+        return True
+
+    def __invert(self, current_node) -> Node:
+        """Recursive function. Inverts left child with right child through simultaneous reassingment"""
+
+        # Base Case
+        if current_node == None:
+            return None
+        
+        # Simultaneous Reassignment (No need for temporary variable)
+        else:
+            current_node.right, current_node.left = self.__invert(current_node.left), self.__invert(current_node.right)
+        
+        # Return node for pointer
+        return current_node
+
 # ---------------------------------------------------------------------------- #
     
     # Tree traversal
